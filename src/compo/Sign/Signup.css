@@ -1,0 +1,48 @@
+.signup-container {
+  max-width: 400px;
+  margin: 120px auto; /* Center the container horizontally */
+  padding: 20px;
+  background: linear-gradient(to bottom right, #85d4ff, #c0e0ff); /* Light blue gradient */
+  border: 1px solid #d6d6d6; /* Light gray border */
+  border-radius: 10px;
+  display: flex; /* Use flexbox for centering vertically */
+  flex-direction: column; /* Stack child elements vertically */
+  justify-content: center; /* Center child elements vertically */
+  align-items: center; /* Center child elements horizontally */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333333; /* Dark blue or charcoal gray text */
+}
+
+input {
+  width: 90%;
+  padding: 7px;
+  font-size: 16px;
+  border: 1px solid #d6d6d6; /* Light gray border */
+  border-radius: 5px;
+}
+
+.error {
+  color: #ff5a5f; /* Soft shade of red for error messages */
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px;
+  background: linear-gradient(to bottom right, #007bff, #4d8dff); /* Gradient of blue */
+  color: #ffffff; /* White button text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(to bottom right, #0056b3, #3366cc); /* Darker shade on hover */
+}

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-// import './compo/Sign/Signi/\n';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Signin.css';
 
 const Signin = () => {
@@ -7,16 +7,16 @@ const Signin = () => {
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
-  
+
     const validateEmail = (email) => {
       // Basic email validation using a regular expression
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return regex.test(email);
     };
-  
+
     const handleSubmit = (e) => {
       e.preventDefault();
-  
+
       // Validate email
       if (!email) {
         setEmailError('Please enter your email.');
@@ -27,7 +27,7 @@ const Signin = () => {
       } else {
         setEmailError('');
       }
-  
+
       // Validate password
       if (!password) {
         setPasswordError('Please enter your password.');
@@ -35,11 +35,11 @@ const Signin = () => {
       } else {
         setPasswordError('');
       }
-  
+
       // Proceed with sign-in logic
       console.log('Sign in:', { email, password });
     };
-  
+
     return (
       <div className="signin-container">
         <h2>Sign In</h2>
@@ -64,8 +64,9 @@ const Signin = () => {
           </div>
           <button type="submit">Sign In</button>
         </form>
+        <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
       </div>
     );
 }
 
-export default Signin
+export default Signin;
