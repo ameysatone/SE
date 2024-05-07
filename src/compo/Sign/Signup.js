@@ -1,6 +1,8 @@
+// Imports
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './Signup.css'; // Import CSS file for styling
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import './Signup.css';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -8,36 +10,22 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
-  const validateEmail = (email) => {
-    // Basic email validation using a regular expression
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate form fields
-    if (!email || !password || !confirmPassword) {
-      setError('Please fill in all fields.');
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
 
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
       return;
     }
 
-    // Clear any previous errors
-    setError('');
-
-    // Proceed with sign-up logic
-    console.log('Sign up:', { email, password });
+    try {
+      const response = await axios.post('http://localhost:8081/signup', { email, password });
+      console.log(response.data.message);
+      // You can redirect the user to a different page or perform other actions here after successful signup
+    } catch (error) {
+      console.log('Error signing up:', error.response.data.error);
+      setError(error.response.data.error);
+    }
   };
 
   return (
